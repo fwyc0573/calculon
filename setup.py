@@ -46,6 +46,10 @@ setup(
   license='Apache 2',
   url='http://github.com/calculon-ai/calculon',
   packages=['calculon', 'calculon.llm'],
-  scripts=['bin/calculon'],
-  install_requires=[],
+  entry_points={
+    'console_scripts': [
+      'calculon = calculon.cli:main'
+    ]
+  },
+  install_requires=['psutil'],
 )
