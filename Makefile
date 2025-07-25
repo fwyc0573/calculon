@@ -1,14 +1,17 @@
 .SUFFIXES:
-.PHONY: help install clean lint test count
+.PHONY: help install install-dev uninstall clean lint test count
 
 help:
-	@echo "options are: install clean lint test count"
+	@echo "options are: install install-dev uninstall clean lint test count"
 
 install:
-	python3 setup.py install --user --record files.txt
+	pip install .
+
+install-dev:
+	pip install --editable .
 
 uninstall:
-	cat files.txt | xargs rm -rf
+	pip uninstall -y calculon
 
 clean:
 	rm -rf build dist calculon.egg-info calculon/*.pyc calculon/__pycache__ calculon/*/__pycache__ test/*.pyc test/__pycache__
